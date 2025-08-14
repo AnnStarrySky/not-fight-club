@@ -25,7 +25,7 @@
                 </li>
             </ul>
         </nav>
-        <section class="section__item section__home flex">
+        <section class="section__item section__home flex hidden">
             <img src="/not-fight-club/img/background.jpeg" alt="background" class="section__image">
             <form class="home__form flex">
                 <label for="name" class="home__name-heroes chewy-regular">Hero name:</label>
@@ -33,8 +33,13 @@
                 <button class="btn home__btn chewy-regular">Change</button>
             </form>
         </section>
-        <section class="section__item section__heroes flex">
+        <section class="section__item section__heroes flex ">
             <img src="/not-fight-club/img/background.jpeg" alt="background" class="section__image">
+            <div class="hero__statistics chewy-regular">
+                <p class="container__hero__name">Hero name: <span class="hero__name">Bob</span></p>
+                <p class="container__hero__wins">Wins: <span class="hero__wins">2</span></p>
+                <p class="container__hero__loses">Loses: <span class="hero__loses">0</span></p>
+            </div>
             <div class="heroes__display flex">
                 <div class="display__left flex">
                     <div class="heroes__card heroes__one">

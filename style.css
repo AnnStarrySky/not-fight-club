@@ -75,7 +75,7 @@ body{
 
 /*section home*/
 
-.section__home{
+.hidden{
     display: none;
 }
 
@@ -97,7 +97,7 @@ body{
     padding: 20px 40px;
     border: 5px solid rgb(19, 48, 23);
     border-radius: 10px;
-    background-color:antiquewhite;
+    background-color:rgb(250, 235, 215, 0.8);
     transform: translateY(70%);
 }
 
@@ -113,6 +113,7 @@ body{
     padding: 10px 20px;
     font-size: 2rem;
     letter-spacing: 3px;
+    
 }
 
 .home__btn{
@@ -194,6 +195,15 @@ body{
     padding: 10px 50px;
     border-radius: 10px;
     color: white;
+    letter-spacing: 3px;
+}
+
+.hero__statistics{
+    position: absolute;
+    bottom: -10%;
+    left: 14.5%;
+    gap: 2rem;
+    font-size: 2.5rem;
     letter-spacing: 3px;
 }
 
