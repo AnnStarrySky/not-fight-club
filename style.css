@@ -71,6 +71,7 @@ body{
 .section__item{
     justify-content: center;
     position: relative;
+    transition: 0.5s ease-in-out;
 }
 
 /*section home*/
