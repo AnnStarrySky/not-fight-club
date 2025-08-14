@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
-        <section></section>
+        <nav class="header__nav bangers-regular flex">
+            <ul class="nav__list list-reset flex">
+                <li class="nav__item">
+                    Home
+                </li>
+                <li class="nav__item">
+                    Heroes
+                </li>
+                <li class="nav__item">
+                    Fight
+                </li>
+            </ul>
+        </nav>
+        <section class="section__item section__home flex">
+            <img src="/not-fight-club/img/background.jpeg" alt="background" class="section__image">
+            <form class="home__form flex">
+                <label for="name" class="home__name-heroes chewy-regular">Hero name:</label>
+                <input type="text" id="name" class="home__name-heroes-input chewy-regular">
+                <button class="btn home__btn chewy-regular">Change</button>
+            </form>
+        </section>
+        <section class="section__item section__heroes">
+        </section>
+        <section class="section__item section__fight">
+        </section>
     </main>
 </body>
 </html>

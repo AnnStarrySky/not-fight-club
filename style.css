@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.bangers-regular {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.chewy-regular {
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+    font-family: sans-serif;
+    max-width: 1920px;
+    background-color: rgb(197, 241, 252);
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.btn{
+    padding: 0;  
+    border: none;  
+    background-color: transparent;  
+    cursor: pointer;  
+} 
+
+.flex{
+    display: flex;
+}
+
+/*nav*/
+
+.header__nav{
+    padding: 20px 0;
+    justify-content: center;
+    background-color: rgb(197, 241, 252);
+}
+
+.nav__list{
+    gap: 5rem;
+    font-size: 3rem;
+}
+
+.nav__item{
+    cursor: pointer;
+}
+
+/*section home*/
+
+.section__home{
+    padding: 0px 150px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.section__image{
+    position: absolute;
+    width: 80%;
+    height: 86vh;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+.home__form{
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    gap: 1rem;
+    padding: 20px 40px;
+    border: 5px solid rgb(19, 48, 23);
+    border-radius: 10px;
+    background-color:antiquewhite;
+    transform: translateY(70%);
+}
+
+.home__name-heroes{
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+
+.home__name-heroes-input{
+    border: none;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 2rem;
+    letter-spacing: 3px;
+}
+
+.home__btn{
+    font-size: 2rem;
+    background-color:  rgb(19, 48, 23);
+    padding: 10px 50px;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+/*heroes*/
+
+.section__heroes{
+    position: relative;
+    z-index: 4;
+}
