@@ -166,6 +166,7 @@ body{
     background-color: rgb(250, 235, 215, 0.5);
     cursor: pointer;
     transition: 0.5s ease-in-out;
+    position: relative;
 }
 
 .heroes__one .heroes__descr{
@@ -207,4 +208,83 @@ body{
     letter-spacing: 3px;
 }
 
+/* section__fight*/
 
+.display__fight{
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    padding: 100px 250px;
+    align-items: center;
+}
+
+.display__fight img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.fight__direction{
+    flex-direction: column;
+    gap: 2rem;
+    background-color: rgb(250, 235, 215, 0.8);
+    padding: 40px;
+    border: 3px solid black;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.checkbox__group{
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.fight__direction__line{
+    border: none;
+    background-color: black;
+    width: 100%;
+    height: 3px;
+}
+
+.checkbox__group__more{
+    gap: 1rem;
+}
+
+.section__fight .hero__statistics{
+    bottom: -14.5%;
+}
+
+.fight__btn{
+    position: absolute;
+    bottom: -10%;
+    font-size: 2rem;
+    background-color:  rgb(19, 48, 23);
+    padding: 10px 50px;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.heroes__indicator{
+    position: absolute;
+    background-color:  rgb(245, 46, 46);
+    border: 1px solid black;
+    width: 80%;
+    bottom: 35%;
+    left: 9.5%;
+    height: 13px;
+    border-radius: 5px;
+    text-align: center;
+    gap: 1rem;
+}    
+
+.indicator__number{
+    text-align: center;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+}

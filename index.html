@@ -33,7 +33,7 @@
                 <button class="btn home__btn chewy-regular">Change</button>
             </form>
         </section>
-        <section class="section__item section__heroes flex ">
+        <section class="section__item section__heroes flex hidden">
             <img src="/not-fight-club/img/background.jpeg" alt="background" class="section__image">
             <div class="hero__statistics chewy-regular">
                 <p class="container__hero__name">Hero name: <span class="hero__name">Bob</span></p>
@@ -43,6 +43,10 @@
             <div class="heroes__display flex">
                 <div class="display__left flex">
                     <div class="heroes__card heroes__one">
+                        <div class="heroes__indicator">
+                        <div class="indicator__image"></div>
+                        <p class="indicator__number chewy-regular">150/150</p>
+                    </div>
                     <img src="/not-fight-club/img/pacman.jpeg" alt="pacman" class="display__left-image">
                     <p class="heroes__descr heroes__balls chewy-regular">Balls: <span class="balls__number">2</span></p>
                     <p class="heroes__descr heroes__protection chewy-regular">Protection: <span class="protection__number">2</span></p>
@@ -93,7 +97,79 @@
             </div>
             <button class="btn heroes__btn chewy-regular">Next</button>
         </section>
-        <section class="section__item section__fight flex">
+        <section class="section__item section__fight flex ">
+            <img src="/not-fight-club/img/background.jpeg" alt="background" class="section__image">
+            <div class="display__fight flex">
+                <div class="display__left flex">
+                    <div class="heroes__card heroes__one">
+                    <div class="heroes__indicator">
+                        <div class="indicator__image"></div>
+                        <p class="indicator__number chewy-regular">150/150</p>
+                    </div>
+                    <img src="/not-fight-club/img/pacman.jpeg" alt="pacman" class="display__left-image">
+                    <p class="heroes__descr heroes__balls chewy-regular">Balls: <span class="balls__number">2</span></p>
+                    <p class="heroes__descr heroes__protection chewy-regular">Protection: <span class="protection__number">2</span></p>
+                    </div>
+                </div>
+                <div class="hero__statistics chewy-regular">
+                <p class="container__hero__name">Hero name: <span class="hero__name">Bob</span></p>
+                <p class="container__hero__wins">Wins: <span class="hero__wins">2</span></p>
+                <p class="container__hero__loses">Loses: <span class="hero__loses">0</span></p>
+                </div>
+                <form class="fight__direction flex chewy-regular">
+                    <div class="checkbox__attack flex checkbox__group">
+                        <p class="checkbox__legend">Select an area to attack, max: <span class="balls__number ">2</span></p>
+                        <div class="checkbox__group__more flex">
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Hat</label>
+                            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Head</label>
+                            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Body</label>
+
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Hands</label>
+            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Legs</label> 
+                        </div>                       
+                    </div>
+                    <div class="fight__direction__line"></div>
+                    <div class="checkbox__protection flex checkbox__group">
+                        <p class="checkbox__legend">Select an area to protection, max: <span class="protection__number">2</span></p>
+                        <div class="checkbox__group__more flex">
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Hat</label>
+                            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Head</label>
+                            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Body</label>
+
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Hands</label>
+            
+                            <input type="checkbox" name="options" class="limit-check">
+                            <label>Legs</label> 
+                        </div>                       
+                    </div>
+                </form>
+                <div class="fight__right flex">
+                    <div class="heroes__card heroes__one">
+                    <div class="heroes__indicator">
+                        <div class="indicator__image"></div>
+                        <p class="indicator__number chewy-regular">150/150</p>
+                    </div>    
+                    <img src="/not-fight-club/img/bigfoot.jpeg" alt="bigfoot" class="display__left-image">
+                    <p class="heroes__descr heroes__balls chewy-regular">Balls: <span class="balls__number">2</span></p>
+                    <p class="heroes__descr heroes__protection chewy-regular">Protection: <span class="protection__number">2</span></p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn fight__btn chewy-regular">Fight</button>
         </section>
     </main>
 </body>
