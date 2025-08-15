@@ -32,6 +32,7 @@ btnDone.addEventListener('click', (e) => {
     hiddenSections();
     showSection(currentIndex + 1);
     activeNav(currentIndex);
+    changePlayerName();
 })
 
 btnNext.addEventListener('click', (e) => {
@@ -47,3 +48,38 @@ menuNavigation.forEach((nav, index) => {
         showSection(index);
     });
 });
+
+/* playerName */
+
+const nameInput = document.querySelector('.home__name-heroes-input');
+const nameHero = document.querySelectorAll('.hero__name');
+
+let playerName = JSON.parse(localStorage.getItem('playerName')) || '';
+nameInput.value = playerName;
+
+function updatePlayerName() {
+    nameInput.value = '';
+    localStorage.removeItem('playerName');
+}
+
+function changePlayerName() {
+    playerName = nameInput.value.trim();
+    if (playerName){
+        localStorage.setItem('playerName', JSON.stringify(playerName));
+    }
+    nameHero.forEach(e => {
+        e.textContent = '';
+        e.textContent = playerName;
+    })
+}
+
+nameInput.addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) {
+        hiddenSections();
+        showSection(currentIndex);
+        activeNav(currentIndex);
+        changePlayerName();
+    }
+});
+
+
