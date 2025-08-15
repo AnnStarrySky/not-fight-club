@@ -3,32 +3,47 @@
 const menuSection = document.querySelectorAll('.section__item');
 const menuNavigation = document.querySelectorAll('.nav__item');
 
-const homeSection = document.querySelector('.section__home');
-const heroesSection = document.querySelector('.section__heroes');
-const fightSection = document.querySelector('.section__fight');
-
-const btnChange = document.querySelector('.home__btn');
+const btnDone = document.querySelector('.home__btn');
 const btnNext = document.querySelector('.heroes__btn');
 
+let currentIndex = 0;
 
-btnChange.addEventListener('click', (e) => {
+function activeNav(index) {
+    menuNavigation.forEach((nav, i) => {
+        nav.classList.toggle('active', i === index);
+    });
+}
+
+function hiddenSections() {
+    menuSection.forEach(section => {
+        section.style.display = 'none';
+    });
+}
+
+function showSection(index) {
+    hiddenSections();
+    menuSection[index].style.display = 'flex';
+    activeNav(index);
+    currentIndex = index;
+}
+
+btnDone.addEventListener('click', (e) => {
     e.preventDefault();
-    updateHidden();
-    heroesSection.style.display = 'flex';
+    hiddenSections();
+    showSection(currentIndex + 1);
+    activeNav(currentIndex);
 })
 
 btnNext.addEventListener('click', (e) => {
     e.preventDefault();
-    updateHidden();
-    fightSection.style.display = 'flex';
+    hiddenSections();
+    showSection(currentIndex + 1);
+    activeNav(currentIndex);
 })
 
-function updateHidden(){
-    menuSection.forEach(e => e.style.display = 'none');
-}
-
-
-function activeNavigation(n){
-}
-
-
+menuNavigation.forEach((nav, index) => {
+    nav.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(index);
+    });
+});

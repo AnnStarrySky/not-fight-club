@@ -68,6 +68,12 @@ body{
     cursor: pointer;
 }
 
+.nav__item.active{
+    color: rgb(19, 48, 23);
+    scale: 1.2;
+    transition: 0.5s ease-in-out;
+}
+
 .section__item{
     justify-content: center;
     position: relative;
