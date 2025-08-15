@@ -83,3 +83,20 @@ nameInput.addEventListener('keypress', function(e) {
 });
 
 
+/* hero */
+
+const avatarPlayer = document.querySelectorAll('.display__left-image');
+const avatarMiniPlayer = document.querySelectorAll('.display__right-image');
+const miniAvatars = document.querySelectorAll('.display__right .heroes__card');
+
+function activeAvatarCard(){
+    miniAvatars.forEach(card => card.classList.remove('active'));
+    this.classList.add('active');
+    avatarPlayer.forEach(avatar => {
+        avatar.src = this.querySelector('.display__right-image').src;
+    })
+}
+
+miniAvatars.forEach(el => {
+    el.addEventListener('click', activeAvatarCard);
+});
