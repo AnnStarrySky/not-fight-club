@@ -83,20 +83,176 @@ nameInput.addEventListener('keypress', function(e) {
 });
 
 
-/* hero */
+/* heroes */
 
-const avatarPlayer = document.querySelectorAll('.display__left-image');
-const avatarMiniPlayer = document.querySelectorAll('.display__right-image');
-const miniAvatars = document.querySelectorAll('.display__right .heroes__card');
+const balls = document.querySelector('.heroes__collection .balls__number');
+const protection = document.querySelector('.heroes__collection .protection__number');
 
-function activeAvatarCard(){
-    miniAvatars.forEach(card => card.classList.remove('active'));
-    this.classList.add('active');
-    avatarPlayer.forEach(avatar => {
-        avatar.src = this.querySelector('.display__right-image').src;
+class Hero {
+    constructor({
+    name,
+    health,
+    balls,
+    protection
     })
+    {
+    this.name = name;
+    this.health = health;
+    this.maxHealth = health; 
+    this.balls = balls;
+    this.protection = protection;
+    this.avatar = heroIcon[name];
+    }
 }
 
-miniAvatars.forEach(el => {
-    el.addEventListener('click', activeAvatarCard);
+const heroIcon = {
+    pacman: 'img/pacman.jpeg',
+    knight: 'img/knight.jpeg',
+    gin: 'img/gin.jpeg',
+    fairy: 'img/fairy.jpeg',
+    bigfoot: 'img/bigfoot.jpeg',
+    dragon: 'img/dragon.jpeg',
+    spider: 'img/spider.jpeg',
+    ghost: 'img/ghost.jpeg'
+};
+
+const Heroes = [
+    new Hero({
+    name: 'pacman',
+    health: 100,
+    maxHealth: 100, 
+    balls: 2,
+    protection: 2
+    }),
+    new Hero({
+    name: 'knight',
+    health: 140,
+    maxHealth: 140, 
+    balls: 2,
+    protection: 3
+    }),
+    new Hero({
+    name: 'gin',
+    health: 120,
+    maxhealth: 120,
+    balls: 3,
+    protection: 1
+    }),
+    new Hero({
+    name: 'fairy',
+    health: 100,
+    maxhealth: 100,
+    balls: 4,
+    protection: 1
+    }),
+    new Hero({
+    name: 'bigfoot',
+    health: 180,
+    maxhealth: 180,
+    balls: 3,
+    protection: 3
+    }),
+    new Hero({
+    name: 'dragon',
+    health: 200,
+    maxhealth: 200,
+    balls: 3,
+    protection: 3
+    }),
+    new Hero({
+    name: 'spider',
+    health: 160,
+    maxhealth: 160,
+    balls: 3,
+    protection: 2
+    }),
+    new Hero({
+    name: 'ghost',
+    health: 140,
+    maxhealth: 140,
+    balls: 4,
+    protection: 0
+    })
+];
+
+const heroesContainer = document.querySelector('.display__right');
+
+function createHeroCard(hero) {
+    const card = document.createElement('div');
+    card.classList.add('heroes__card', 'heroes__collection');
+    
+    const image = document.createElement('img');
+    image.classList.add('display__right-image');
+    image.src = hero.avatar;
+    image.alt = hero.name;
+    
+    const ballsInfo = document.createElement('p');
+    ballsInfo.classList.add('heroes__descr', 'heroes__balls', 'chewy-regular');
+    ballsInfo.innerHTML = `Balls: <span class="balls__number">${hero.balls}</span>`;
+    
+    const protectionInfo = document.createElement('p');
+    protectionInfo.classList.add('heroes__descr', 'heroes__protection', 'chewy-regular');
+    protectionInfo.innerHTML = `Protection: <span class="protection__number">${hero.protection}</span>`;
+    
+    card.appendChild(image);
+    card.appendChild(ballsInfo);
+    card.appendChild(protectionInfo);
+    
+    return card;
+}
+
+function createHeroes() {
+    heroesContainer.innerHTML = '';
+    Heroes.forEach(hero => {
+        const card = createHeroCard(hero);
+        heroesContainer.appendChild(card);
+    });
+}
+
+createHeroes();
+
+const allAvatars = document.querySelectorAll('.display__left');
+
+function updateAllAvatars(container, hero) {
+    const avatarPlayer = container.querySelector('.display__left-image');
+    const ballsAvatar = container.querySelector('.balls__number');
+    const protectionAvatar = container.querySelector('.protection__number');
+    const healthNumber = container.querySelector('.indicator__number');
+    
+    avatarPlayer.src = hero.avatar;
+    ballsAvatar.textContent = hero.balls;
+    protectionAvatar.textContent = hero.protection;
+    healthNumber.textContent = hero.health + '/' + hero.maxHealth;
+}
+
+function updateAllCards(hero) {
+    allAvatars.forEach(container => {
+        updateAllAvatars(container, hero);
+    });
+}
+
+const cards = document.querySelectorAll('.display__right .heroes__card');
+
+function activeCard() {
+    cards.forEach(card => {
+        card.classList.remove('active');
+    });
+    this.classList.add('active');
+    const heroName = this.querySelector('img').alt;
+    const activeHero = Heroes.find(hero => hero.name === heroName);
+    if (activeHero) {
+        updateAllCards(activeHero);
+    }
+}
+
+cards.forEach(card => {
+    card.addEventListener('click', activeCard);
 });
+
+cards[0].classList.add('active');
+updateAllCards(Heroes[0]);
+
+
+    
+
+
