@@ -237,11 +237,15 @@ function activeCard() {
     cards.forEach(card => {
         card.classList.remove('active');
     });
+    
     this.classList.add('active');
     const heroName = this.querySelector('img').alt;
     const activeHero = Heroes.find(hero => hero.name === heroName);
+    
     if (activeHero) {
         updateAllCards(activeHero);
+        let opponent = randomHero();
+        updateOpponent(opponent);
     }
 }
 
@@ -252,7 +256,35 @@ cards.forEach(card => {
 cards[0].classList.add('active');
 updateAllCards(Heroes[0]);
 
+/* opponent */
 
+const opponentCard = document.querySelector('.fight-opponent');
+const opponentBtn = document.querySelector('.btn-opponent');
+
+function updateOpponent(hero) {
+    const avatarPlayer = opponentCard.querySelector('.display__left-image');
+    const ballsAvatar = opponentCard.querySelector('.balls__number');
+    const protectionAvatar = opponentCard.querySelector('.protection__number');
+    const healthNumber = opponentCard.querySelector('.indicator__number');
+    
+    avatarPlayer.src = hero.avatar;
+    ballsAvatar.textContent = hero.balls;
+    protectionAvatar.textContent = hero.protection;
+    healthNumber.textContent = hero.health + '/' + hero.maxHealth;
+}
+
+function randomHero() {
+    const randomIndex = Math.floor(Math.random() * Heroes.length);
+    return Heroes[randomIndex];
+}
+
+cards[0].classList.add('active');
+updateAllCards(Heroes[0]);
+updateOpponent(randomHero()); 
+
+opponentBtn.addEventListener('click', function() {
+    updateOpponent(randomHero());
+});
     
 
 
