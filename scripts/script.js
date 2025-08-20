@@ -243,9 +243,19 @@ function activeCard() {
     const activeHero = Heroes.find(hero => hero.name === heroName);
     
     if (activeHero) {
+
+        attackLimit.textContent = activeHero.balls;
+        protectLimit.textContent = activeHero.protection;
+
+        resetCheckbox(attackCheckboxes);
+        resetCheckbox(protectCheckboxes);
+        
         updateAllCards(activeHero);
-        let opponent = randomHero();
+        const opponent = randomHero();
         updateOpponent(opponent);
+
+        limitCheckboxes(attackCheckboxes, activeHero.balls);
+        limitCheckboxes(protectCheckboxes, activeHero.protection);
     }
 }
 
@@ -255,6 +265,7 @@ cards.forEach(card => {
 
 cards[0].classList.add('active');
 updateAllCards(Heroes[0]);
+
 
 /* opponent */
 
@@ -285,6 +296,50 @@ updateOpponent(randomHero());
 opponentBtn.addEventListener('click', function() {
     updateOpponent(randomHero());
 });
-    
+
+/* checkbox */
+
+const attackLimit = document.querySelector('.checkbox__attack .balls__number');
+const protectLimit = document.querySelector('.checkbox__protection .protection__number');
+
+const attackCheckboxes = document.querySelectorAll('.attack input');
+const protectCheckboxes = document.querySelectorAll('.protection input');
+
+const checkedCheckboxesAttack = document.querySelectorAll('.attack input:checked');
+const checkedCheckboxesProtection = document.querySelectorAll('.protection input:checked');
+
+function limitCheckboxes(checkboxes, max) {
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const parent = checkbox.closest('.attack, .protection');
+            const checkedCheckboxes = parent.querySelectorAll('input:checked').length;
+            if (checkedCheckboxes >= max) {
+                checkboxes.forEach(cb => {
+                    if (!cb.checked) {
+                        cb.disabled = true;
+                    }
+                }); 
+            } else {
+                checkboxes.forEach(cb => {
+                    if (cb.disabled) {
+                        cb.disabled = false;
+                    }
+                }); 
+            } 
+        }); 
+    }); 
+} 
+
+function resetCheckbox(checkboxes) {
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+        checkbox.disabled = false;
+    });
+}
+
+limitCheckboxes(attackCheckboxes, Heroes[0].balls);
+limitCheckboxes(protectCheckboxes, Heroes[0].protection);
+attackLimit.textContent = Heroes[0].balls;
+protectLimit.textContent = Heroes[0].protection;
 
 

@@ -308,3 +308,7 @@ body{
     background-color: white;
     align-items:center;
 }
+
+.checkbox__group__more label, .checkbox__group__more input{
+    cursor: pointer;
+}
