@@ -102,6 +102,26 @@ class Hero {
     this.balls = balls;
     this.protection = protection;
     this.avatar = heroIcon[name];
+    this.attackArea = [];
+    this.protectArea = [];
+    }
+
+    randomAttackArea(max){
+        const area = ['hat', 'head', 'body', 'hands', 'legs'];
+        this.attackArea = [];
+        for (let i = 0; i < max; i++) {
+            const randomIndex = Math.floor(Math.random() * area.length);
+            this.attackArea.push(area[randomIndex]);
+        }
+    }
+
+    randomProtectArea(max){
+        const area = ['hat', 'head', 'body', 'hands', 'legs'];
+        this.protectArea = [];
+        for (let i = 0; i < max; i++) {
+            const randomIndex = Math.floor(Math.random() * area.length);
+            this.protectArea.push(area[randomIndex]);
+        }
     }
 }
 
@@ -251,8 +271,11 @@ function activeCard() {
         resetCheckbox(protectCheckboxes);
         
         updateAllCards(activeHero);
-        const opponent = randomHero();
-        updateOpponent(opponent);
+        
+        if (!currentOpponent) {
+            currentOpponent = randomHero();
+            updateOpponent(currentOpponent);
+        }
 
         limitCheckboxes(attackCheckboxes, activeHero.balls);
         limitCheckboxes(protectCheckboxes, activeHero.protection);
@@ -294,7 +317,8 @@ updateAllCards(Heroes[0]);
 updateOpponent(randomHero()); 
 
 opponentBtn.addEventListener('click', function() {
-    updateOpponent(randomHero());
+    currentOpponent = randomHero();
+    updateOpponent(currentOpponent);
 });
 
 /* checkbox */
@@ -304,9 +328,6 @@ const protectLimit = document.querySelector('.checkbox__protection .protection__
 
 const attackCheckboxes = document.querySelectorAll('.attack input');
 const protectCheckboxes = document.querySelectorAll('.protection input');
-
-const checkedCheckboxesAttack = document.querySelectorAll('.attack input:checked');
-const checkedCheckboxesProtection = document.querySelectorAll('.protection input:checked');
 
 function limitCheckboxes(checkboxes, max) {
     checkboxes.forEach(checkbox => {
@@ -343,3 +364,85 @@ attackLimit.textContent = Heroes[0].balls;
 protectLimit.textContent = Heroes[0].protection;
 
 
+/* fight */
+
+let currentOpponent = null;
+
+function playerAttack() {
+    const checkedAttack = document.querySelectorAll('.attack input:checked');
+    return Array.from(checkedAttack).map(checkbox => checkbox.value.toLowerCase());
+}
+
+function playerProtect() {
+    const checkedProtect = document.querySelectorAll('.protection input:checked');
+    return Array.from(checkedProtect).map(checkbox => checkbox.value.toLowerCase());
+}
+
+function calculateDamage(attacker, defender, attackArea, protectArea) {
+    const damage = 20; 
+    let totalDamage = 0;
+
+    attackArea.forEach(area => {
+        if (!protectArea.includes(area)) {
+            totalDamage += damage;
+        }
+    });
+
+    defender.health = Math.max(defender.health - totalDamage, 0);
+}
+
+function startFight() {
+    const clearElements = document.querySelectorAll('.attack__info, .protect__info, .damage__info-player, .damage__info-opponent');
+    clearElements.forEach(element => element.textContent = '');
+
+    const activeCard = document.querySelector('.heroes__card.active');
+    const playerHero = Heroes.find(hero => hero.name === activeCard.querySelector('img').alt);
+    const opponentHero = currentOpponent;
+
+    const playerAttackAreas = playerAttack();
+    const playerProtectAreas = playerProtect();
+
+    opponentHero.randomAttackArea(opponentHero.balls);
+    opponentHero.randomProtectArea(opponentHero.protection);
+
+    const playerHealthBefore = playerHero.health;
+    const opponentHealthBefore = opponentHero.health;
+
+    calculateDamage(playerHero, opponentHero, playerAttackAreas, opponentHero.protectArea);
+    calculateDamage(opponentHero, playerHero, opponentHero.attackArea, playerProtectAreas);
+
+    
+    updateFightHistory(
+        playerHero,
+        opponentHero,
+        opponentHero.attackArea,
+        opponentHero.protectArea,
+        playerHealthBefore,
+        opponentHealthBefore
+    );
+
+    updateAllCards(playerHero);
+    updateOpponent(opponentHero);
+}
+
+
+function updateFightHistory(
+    playerHero,
+    opponentHero,
+    opponentAttackAreas,
+    opponentProtectAreas,
+    playerHealthBefore,
+    opponentHealthBefore
+) {
+    document.querySelector('.attack__info').textContent = opponentAttackAreas.join(', ') || 'none';
+    document.querySelector('.protect__info').textContent = opponentProtectAreas.join(', ') || 'none';
+    
+    const playerDamage = opponentHealthBefore - opponentHero.health;
+    const opponentDamage = playerHealthBefore - playerHero.health;
+    
+    document.querySelector('.damage__info-player').textContent = Math.max(playerDamage, 0);
+    document.querySelector('.damage__info-opponent').textContent = Math.max(opponentDamage, 0);
+}
+
+const fightBtn = document.querySelector('.fight__btn');
+fightBtn.addEventListener('click', startFight);

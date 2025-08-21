@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ball vs Ball</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@
                 <input type="text" id="name" class="home__name-heroes-input chewy-regular">
                 <button class="btn home__btn chewy-regular">Done</button>
             </form>
+            <h1 class="home__title bangers-regular">Ball vs Ball</h1>
         </section>
         <section class="section__item section__heroes flex hidden">
             <img src="img/background.jpeg" alt="background" class="section__image">
@@ -121,19 +122,19 @@
                         <p class="checkbox__descr">Select an area to attack, max: <span class="balls__number"></span></p>
                         <div class="checkbox__group__more flex attack">
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Hat">
                                 Hat</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Head">
                                 Head</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Body">
                                 Body</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Hands">
                                 Hands</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Legs">
                                 Legs</label>
                         </div>
                     </div>
@@ -142,19 +143,19 @@
                         <p class="checkbox__descr">Select an area to protection, max: <span class="protection__number"></span></p>
                         <div class="checkbox__group__more flex protection">
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Hat">
                                 Hat</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Head">
                                 Head</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Body">
                                 Body</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Hands">
                                 Hands</label>
                             <label>
-                                <input type="checkbox" name="options">
+                                <input type="checkbox" name="options" value="Legs">
                                 Legs</label>
                         </div>
                     </div>
@@ -180,6 +181,20 @@
                 </div>
             </div>
             <button class="btn fight__btn chewy-regular">Fight</button>
+            <div class="fight__history chewy-regular">
+                <div class="fight__round">
+                <h3>The history of the battle:</h3>
+                <div class="fight__opponent-area">
+                    <h4>Opponent selected area:</h4>
+                    <p>Attack: <span class="attack__info"></span></p>
+                    <p>Protect: <span class="protect__info"></span></p>
+                </div>
+                <div class="fight__damage">
+                    <p>Player damage: <span class="damage__info-player"></span></p>
+                    <p>Opponent damage: <span class="damage__info-opponent"></span></p>
+                </div>
+            </div>
+            </div>
         </section>
     </main>
     <script src="scripts/script.js"></script>

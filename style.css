@@ -312,3 +312,51 @@ body{
 .checkbox__group__more label, .checkbox__group__more input{
     cursor: pointer;
 }
+
+.home__title{
+    position: absolute;
+    bottom: -190%;
+    color: rgb(19, 48, 23);
+    font-size: 8rem;
+    letter-spacing: 15px;
+    font-weight: 900;
+}
+
+.fight__history{
+    position: absolute;
+    padding: 20px 80px;
+    bottom: -22%;
+    right: 14%;
+    background-color: rgb(250, 235, 215, 0.8);
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+h3, h4 {
+    padding: 0;
+    margin: 0;
+}
+
+h3{
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+}
+
+h4{
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    font-weight: 400;
+}
+
+.fight__opponent-area p{
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.603);
+}
+
+.fight__damage{
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
