@@ -462,7 +462,26 @@ function updateFightHistory(
 }
 
 const fightBtn = document.querySelector('.fight__btn');
-fightBtn.addEventListener('click', startFight);
+fightBtn.addEventListener('click', () => {
+    startFight();
+    stopOther();
+});
+
+function stopOther(){
+    opponentBtn.disabled = true;
+    menuNavigation.forEach(nav => nav.style.pointerEvents = 'none');
+}
+
+function activeOther(){
+    menuNavigation.forEach(nav => nav.style.pointerEvents = 'auto');
+    opponentBtn.disabled = false;
+}
+
+menuNavigation.forEach(item => {
+    item.addEventListener('click', e => {
+        if (navBlock) e.preventDefault();
+    });
+});
 
 /* wins/loses */
 
@@ -515,4 +534,5 @@ btnFightEnd.addEventListener('click', () => {
     document.querySelector('.fight__result').classList.add('hidden');
     document.querySelector('.fight__btn').disabled = false;
     resetHeroes();
+    activeOther();
 });
