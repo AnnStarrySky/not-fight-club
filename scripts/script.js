@@ -106,22 +106,36 @@ class Hero {
     this.protectArea = [];
     }
 
-    randomAttackArea(max){
-        const area = ['hat', 'head', 'body', 'hands', 'legs'];
-        this.attackArea = [];
-        for (let i = 0; i < max; i++) {
-            const randomIndex = Math.floor(Math.random() * area.length);
-            this.attackArea.push(area[randomIndex]);
+    randomAttackArea(max) {
+    const area = ['hat', 'head', 'body', 'hands', 'legs']; 
+    const attackArea = []; 
+
+    while (attackArea.length < max) { 
+    const randomIndex = Math.floor(Math.random() * area.length); 
+    const selectedArea = area[randomIndex];
+
+    if (!attackArea.includes(selectedArea)) {
+        attackArea.push(selectedArea); 
         }
     }
 
-    randomProtectArea(max){
-        const area = ['hat', 'head', 'body', 'hands', 'legs'];
-        this.protectArea = [];
-        for (let i = 0; i < max; i++) {
-            const randomIndex = Math.floor(Math.random() * area.length);
-            this.protectArea.push(area[randomIndex]);
+    this.attackArea = attackArea; 
+    }
+
+    randomProtectArea(max) {
+    const area = ['hat', 'head', 'body', 'hands', 'legs']; 
+    const protectArea = []; 
+
+    while (protectArea.length < max) { 
+    const randomIndex = Math.floor(Math.random() * area.length); 
+    const selectedArea = area[randomIndex];
+
+    if (!protectArea.includes(selectedArea)) {
+        protectArea.push(selectedArea); 
         }
+    }
+
+    this.protectArea = protectArea; 
     }
 }
 
@@ -411,7 +425,8 @@ function startFight() {
     calculateDamage(playerHero, opponentHero, playerAttackAreas, opponentHero.protectArea);
     calculateDamage(opponentHero, playerHero, opponentHero.attackArea, playerProtectAreas);
 
-    
+    fightEnd(playerHero, opponentHero);
+
     updateFightHistory(
         playerHero,
         opponentHero,
@@ -442,7 +457,62 @@ function updateFightHistory(
     
     document.querySelector('.damage__info-player').textContent = Math.max(playerDamage, 0);
     document.querySelector('.damage__info-opponent').textContent = Math.max(opponentDamage, 0);
+
+    
 }
 
 const fightBtn = document.querySelector('.fight__btn');
 fightBtn.addEventListener('click', startFight);
+
+/* wins/loses */
+
+function fightEnd(player, opponent) {
+    if (player.health <= 0 || opponent.health <= 0) {
+        const resultElement = document.querySelector('.fight__result');
+        const resultText = resultElement.querySelector('.result__text');
+
+        if (player.health <= 0 && opponent.health <= 0) {
+            resultText.textContent = 'Draw!';
+        } else if (player.health <= 0) {
+            resultText.textContent = 'You lose!';
+        } else {
+            resultText.textContent = 'You win!';
+        }
+
+        resultElement.classList.remove('hidden');
+        document.querySelector('.fight__btn').disabled = true;
+
+        return true;
+    }
+    return false;
+}
+
+function resetHeroes() {
+
+    const activeCard = document.querySelector('.heroes__card.active');
+    const playerHero = Heroes.find(hero => hero.name === activeCard.querySelector('img').alt);
+    const opponentHero = currentOpponent;
+
+    Heroes.forEach(hero => {
+        hero.health = hero.maxHealth;
+    });
+
+    currentOpponent.health = currentOpponent.maxHealth;
+
+    document.querySelectorAll('.attack__info, .protect__info, .damage__info-player, .damage__info-opponent')
+        .forEach(el => el.textContent = '');
+
+    resetCheckbox(attackCheckboxes);
+    resetCheckbox(protectCheckboxes);
+
+    updateAllCards(playerHero);
+    updateOpponent(opponentHero);
+}
+
+const btnFightEnd = document.querySelector('.result__done');
+
+btnFightEnd.addEventListener('click', () => {
+    document.querySelector('.fight__result').classList.add('hidden');
+    document.querySelector('.fight__btn').disabled = false;
+    resetHeroes();
+});
