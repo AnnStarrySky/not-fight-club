@@ -54,23 +54,34 @@ menuNavigation.forEach((nav, index) => {
 const nameInput = document.querySelector('.home__name-heroes-input');
 const nameHero = document.querySelectorAll('.hero__name');
 
-let playerName = JSON.parse(localStorage.getItem('playerName')) || '';
-nameInput.value = playerName;
+const playerWins = document.querySelectorAll('.hero__wins');
+const playerLoses = document.querySelectorAll('.hero__loses')
 
-function updatePlayerName() {
-    nameInput.value = '';
-    localStorage.removeItem('playerName');
-}
+let playerInfo = JSON.parse(localStorage.getItem('playerInfo')) || {
+    name: '',
+    wins: 0,
+    loses: 0
+};
+
+nameInput.value = playerInfo.name;
+playerWins.forEach(e => e.textContent = playerInfo.wins);
+playerLoses.forEach(e => e.textContent = playerInfo.loses); 
+
 
 function changePlayerName() {
-    playerName = nameInput.value.trim();
-    if (playerName){
-        localStorage.setItem('playerName', JSON.stringify(playerName));
+    if (nameInput.value.trim() !== playerInfo.name) {
+        playerInfo.wins = 0;
+        playerInfo.loses = 0;
     }
-    nameHero.forEach(e => {
-        e.textContent = '';
-        e.textContent = playerName;
-    })
+
+    playerInfo.name = nameInput.value.trim();
+    nameHero.forEach(e => e.textContent = playerInfo.name);
+    saveNameWinsLoses();
+    updateWinLose();
+}
+
+function saveNameWinsLoses (){
+    localStorage.setItem('playerInfo', JSON.stringify(playerInfo));
 }
 
 nameInput.addEventListener('keypress', function(e) {
@@ -81,6 +92,21 @@ nameInput.addEventListener('keypress', function(e) {
         changePlayerName();
     }
 });
+
+function Win() {
+    playerInfo.wins++;
+    saveNameWinsLoses();
+}
+
+function Lose() {
+    playerInfo.loses++;
+    saveNameWinsLoses();
+}
+
+function updateWinLose() {
+    playerWins.forEach(e => e.textContent = playerInfo.wins);
+    playerLoses.forEach(e => e.textContent = playerInfo.loses); 
+}
 
 
 /* heroes */
@@ -477,11 +503,7 @@ function activeOther(){
     opponentBtn.disabled = false;
 }
 
-menuNavigation.forEach(item => {
-    item.addEventListener('click', e => {
-        if (navBlock) e.preventDefault();
-    });
-});
+
 
 /* wins/loses */
 
@@ -494,8 +516,10 @@ function fightEnd(player, opponent) {
             resultText.textContent = 'Draw!';
         } else if (player.health <= 0) {
             resultText.textContent = 'You lose!';
+            Lose();
         } else {
             resultText.textContent = 'You win!';
+            Win();
         }
 
         resultElement.classList.remove('hidden');
@@ -535,4 +559,8 @@ btnFightEnd.addEventListener('click', () => {
     document.querySelector('.fight__btn').disabled = false;
     resetHeroes();
     activeOther();
+    updateWinLose();
 });
+
+
+
