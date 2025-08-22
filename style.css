@@ -136,8 +136,6 @@ body{
 
 .heroes__display{
     gap: 10rem;
-    width: 100%;
-    height: 100%;
     justify-content: space-between;
     padding: 100px 250px;
 }
@@ -396,4 +394,163 @@ h4{
 .result__text{
    text-align: center;
    font-size: 8rem;
+}
+
+@media (max-width: 800px){
+    .header__nav{
+        padding: 1% 0;
+    }
+
+    .nav__list{
+        gap: 2rem;
+        font-size: 2rem;
+    }
+
+    .section__image{
+        width: 90%;
+        height: 90vh;
+    }
+
+    .home__form{
+        width: 50%;
+        gap: 1rem;
+        padding: 2% 4%;
+        transform: translateY(70%);
+}
+
+    .home__name-heroes{
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .home__name-heroes-input{
+        padding: 2% 4%;
+        letter-spacing: 2px;
+        width: 98%;
+        font-size: 1.5rem;
+        
+    }
+
+    .home__btn{
+        font-size: 2rem;
+        padding: 1% 10%;
+        letter-spacing: 2px;
+    }
+
+    .home__title{
+       font-size: 4rem;
+       letter-spacing: 5px;
+    }
+
+    .display__left img{
+        text-align: center;
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .heroes__display{
+        gap: 1rem;
+        padding: 20px 50px 0px;
+    }
+
+    .heroes__one .heroes__descr{
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .heroes__indicator{
+        height: 10px;
+    }    
+
+    .indicator__number{
+        font-size: 1rem;
+        
+    }
+
+    .display__right{
+        gap: 1rem;
+        width: 70%;
+    }
+
+    .display__right img{
+        max-width: 110px;
+        max-height: 80px;
+        margin-bottom: 5px;
+        object-fit: cover;
+    }
+
+    .heroes__collection {
+        font-size: 0.8rem;
+    }
+
+    .hero__statistics{
+        font-size: 1.5rem;
+        top: 48.5%;
+        left: 7%;
+    }
+
+    .heroes__btn {
+        bottom: 0%;
+        left: 7%;
+    }
+
+    .display__fight{
+        gap: 1rem;
+        padding: 20px 50px 0px;
+        flex-wrap: wrap;
+    }
+
+    .fight__direction {
+        width: 50%;
+        flex-direction: row;
+        padding: 20px;
+        font-size: 0.7rem;
+        gap: 1rem;
+    }
+
+    .checkbox__group__more {
+        flex-direction: column;
+    }
+
+    .fight__direction__line{
+       display: none;
+    }
+
+    .fight-opponent img{
+        text-align: center;
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .fight-opponent {
+        margin-top: 50%;
+    }
+    
+    .display__fight .hero__statistics{
+        top: 45%;
+    }
+
+    .fight__history {
+        width: 45%;
+        padding: 20px;
+        font-size: 0.7rem;
+        right: 7%;
+        bottom: 0%;
+    }
+
+    .fight__btn{
+        right: 15%;
+        bottom: 45%;
+    }
+
+    .fight__result{
+        top: 30%;
+        min-width: 40%;
+        min-height: 40%;
+        padding: 20px 30px;
+    }
+
+    .result__text{
+        font-size: 6rem;
+    }
 }
