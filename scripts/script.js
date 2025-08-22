@@ -279,11 +279,14 @@ function updateAllAvatars(container, hero) {
     const ballsAvatar = container.querySelector('.balls__number');
     const protectionAvatar = container.querySelector('.protection__number');
     const healthNumber = container.querySelector('.indicator__number');
+    const healthIndicator = container.querySelector('.indicator__image');
     
     avatarPlayer.src = hero.avatar;
     ballsAvatar.textContent = hero.balls;
     protectionAvatar.textContent = hero.protection;
     healthNumber.textContent = hero.health + '/' + hero.maxHealth;
+    const healthWidth = remainedHealth(hero.health, hero.maxHealth);
+    healthIndicator.style.width = healthWidth;
 }
 
 function updateAllCards(hero) {
@@ -341,11 +344,14 @@ function updateOpponent(hero) {
     const ballsAvatar = opponentCard.querySelector('.balls__number');
     const protectionAvatar = opponentCard.querySelector('.protection__number');
     const healthNumber = opponentCard.querySelector('.indicator__number');
+    const healthIndicator = opponentCard.querySelector('.indicator__image');
     
     avatarPlayer.src = hero.avatar;
     ballsAvatar.textContent = hero.balls;
     protectionAvatar.textContent = hero.protection;
     healthNumber.textContent = hero.health + '/' + hero.maxHealth;
+    const healthWidth = remainedHealth(hero.health, hero.maxHealth);
+    healthIndicator.style.width = healthWidth;
 }
 
 function randomHero() {
@@ -570,3 +576,9 @@ function notSelected(){
 }
 
 notSelected();
+
+/* heroes indicator*/
+
+function remainedHealth(currentHealth, maxHealth) {
+    return ((maxHealth - currentHealth) / maxHealth) * 100 + '%';
+}

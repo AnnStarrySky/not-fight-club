@@ -285,15 +285,25 @@ body{
     border-radius: 5px;
     text-align: center;
     gap: 1rem;
+  
 }    
 
 .indicator__number{
     text-align: center;
-    margin-top: 15px;
+    margin-top: 5px;
     letter-spacing: 3px;
     font-size: 1.5rem;
     font-weight: 900;
     color: white;
+}
+
+.indicator__image{
+    margin-left: auto;
+    background-color:  rgb(19, 48, 23);
+    height: 100%;
+    width: 50%;
+   
+    
 }
 
 .btn-opponent{
