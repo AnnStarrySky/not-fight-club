@@ -64,6 +64,7 @@ let playerInfo = JSON.parse(localStorage.getItem('playerInfo')) || {
 };
 
 nameInput.value = playerInfo.name;
+nameHero.forEach(e => e.textContent = playerInfo.name);
 playerWins.forEach(e => e.textContent = playerInfo.wins);
 playerLoses.forEach(e => e.textContent = playerInfo.loses); 
 
@@ -562,5 +563,10 @@ btnFightEnd.addEventListener('click', () => {
     updateWinLose();
 });
 
+/* if the character is not selected*/
 
+function notSelected(){
+    activeCard.call(cards[0]);
+}
 
+notSelected();
