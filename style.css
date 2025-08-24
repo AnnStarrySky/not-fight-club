@@ -553,4 +553,275 @@ h4{
     .result__text{
         font-size: 6rem;
     }
+
+    
+}
+
+@media (max-width: 650px){
+
+    .heroes__display{
+        flex-direction: column;
+    }
+
+    .display__left img, .fight-opponent img{
+        width: 160px;
+        height: 160px;
+    }
+
+    .fight-opponent{
+        margin-top: 70%;
+    }
+
+    .display__right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .display__right img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .heroes__collection {
+        font-size: 0.7rem;
+    }
+
+    .heroes__btn {
+        left: 36%;
+        bottom: -20%;
+        font-size: 1.5rem;
+    }
+
+    .fight__btn {
+        font-size: 1.5rem;
+        bottom: 45%;
+    }
+
+    .section__image{
+        width: 98%;
+        height: 92vh;
+    }
+
+    .heroes__display, .display__fight{
+        padding: 20px;
+    }
+
+    .display__right {
+        gap: 0.8rem;
+    }
+
+    .hero__statistics{
+        top: 5%;
+        left: 40%;
+    }
+
+    .display__fight .hero__statistics{
+        top: 43%;
+        left: 4%;
+    }
+
+    .heroes__indicator{
+        height: 3%;
+    }
+
+    .indicator__number {
+        font-size: 0.7rem;
+        margin: 0;
+    }
+
+    h3{
+        font-size: 1rem;
+    }
+
+    h4{
+        font-size: 0.8rem;
+    }
+
+    .fight__damage p{
+        font-size: 0.8rem;
+    }
+
+    .checkbox__group__more{
+        gap: 0.2rem;
+    }
+
+    .fight__history{
+        bottom: 10%;
+        right: 3.5%;
+    }
+}
+
+@media (max-width: 558px){
+    .heroes__btn {
+        left: 60%;
+        bottom: 70%;
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .fight__btn{
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .display__right {
+        justify-content: center;
+    }
+
+    .home__btn {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+    
+    .fight__history{
+        bottom: 5%;
+    }
+
+    .hero__statistics{
+        left: 60%;
+    }    
+
+    .fight__direction {
+        width: 50%;
+    }
+    
+    .fight__history {
+        width: 46%;
+    }
+
+    .display__fight {
+        gap: 0;
+    }
+}
+
+@media (max-width: 442px){
+    .display__left img, .fight-opponent img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .heroes__one .heroes__descr{
+        font-size: 0.7rem;
+    }
+
+    .indicator__number {
+        font-size: 0.5rem;
+    }
+
+    .heroes__indicator{
+        bottom: 40%;
+    }
+
+    .indicator__number{
+        margin-top: 2px;  
+    }
+
+    .fight-opponent {
+        margin-top: 0%;
+    }
+
+    .display__fight{
+        flex-direction: column;
+        gap: 10px;
+    } 
+
+    .fight__direction {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        align-items:center;
+        gap: 10px;
+    }
+    
+    .checkbox__group__more{
+        flex-direction: row;
+        
+    }
+
+    .checkbox__group{
+        gap: 2px;
+    }
+
+    .display__fight .hero__statistics{
+        top: 5%;
+        left: 5%;
+        font-size: 0.7rem;
+        max-width: 25%;
+    }
+
+    .hero__statistics {
+        font-size: 0.7rem;
+        left: 55%;
+    }
+
+    .fight__history {
+        bottom: -26%;
+        width: 80%;
+        right: 10%;
+        padding: 10px;
+    }
+
+    .fight__btn {
+        bottom: -36%;
+        z-index: 10;
+        right: 30%;
+        width: 40%;
+    }
+
+    .fight__result{
+        top: 40%;
+        min-width: 50%;
+        min-height: 40%;
+        padding: 10px 20px;
+    }
+
+    .result__text {
+        font-size: 4rem;
+    }
+
+    .result__done {
+        font-size: 1rem;
+    }
+
+    h3, h4 {
+        font-size: 0.7rem;
+    }
+
+    .fight__damage p{
+        font-size: 0.7rem;
+    }
+    
+    .btn-opponent {
+        padding: 5px;
+        bottom: 5%;
+    }
+
+    .heroes__btn{
+        bottom: 76%;
+    }
+    
+    .display__right img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .heroes__collection {
+        font-size: 0.5rem;
+    }
+
+    .display__right{
+       column-gap: 30px;
+    }
+
+    .home__form {
+        width: 80%;
+        padding: 10px 20px;
+    }
+
+}
+
+@media (max-width: 366px){
+    .home__title{
+        font-size: 3rem;
+    }
 }
