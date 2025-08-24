@@ -747,11 +747,16 @@ h4{
         left: 5%;
         font-size: 0.7rem;
         max-width: 25%;
+        height: 25%;
+        bottom: 0;
+
     }
 
     .hero__statistics {
         font-size: 0.7rem;
         left: 55%;
+        bottom: 95%;
+        z-index: -1;
     }
 
     .fight__history {
@@ -807,10 +812,6 @@ h4{
 
     .heroes__collection {
         font-size: 0.5rem;
-    }
-
-    .display__right{
-       column-gap: 30px;
     }
 
     .home__form {
