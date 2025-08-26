@@ -449,6 +449,19 @@ function startFight() {
     const playerAttackAreas = playerAttack();
     const playerProtectAreas = playerProtect();
 
+    const playerAttackActive = playerAttack().length;
+    const playerProtectActive = playerProtect().length;
+
+    if (playerAttackActive !== playerHero.balls) {
+        alert('Choose the right number of attack directions (' + playerHero.balls + ')');
+        return;
+    }
+
+    if (playerProtectActive !== playerHero.protection) {
+        alert('Choose the right number of directions of protection (' + playerHero.protection + ')');
+        return;
+    }
+
     opponentHero.randomAttackArea(opponentHero.balls);
     opponentHero.randomProtectArea(opponentHero.protection);
 
